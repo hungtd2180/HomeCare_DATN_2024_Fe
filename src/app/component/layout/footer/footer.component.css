@@ -1,0 +1,34 @@
+.footer{
+  height: 180px;
+  background: var(--bg1) no-repeat top right, var(--bg2) no-repeat center;
+  background-color: #13d457;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  position: relative;
+  bottom: 0px;
+  display: flow-root;
+  .container{
+    display: flow-root;
+    box-sizing: content-box;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: none;
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+  .txt{
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.42857;
+    margin-top: 8px;
+  }
+}
+@media (max-width: 1189.98px){
+  .footer txt1 {
+    font-size: 20px !important;
+  }
+}
