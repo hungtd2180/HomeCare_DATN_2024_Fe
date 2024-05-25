@@ -1,11 +1,15 @@
 import {FormControl, FormGroup} from "@angular/forms";
+import {HttpHeaders} from "@angular/common/http";
 
 export class Util {
+  public static createHeader(): HttpHeaders {
+    return new HttpHeaders({'Content-Type': 'application/json'});
+  }
   static convertDateToTimeStamp(date: Date): number {
     return date.getTime();
   }
 
-  static createFormGroup(formControlModel: any): FormGroup {
+  public static createFormGroup(formControlModel: any): FormGroup {
     const group: any = {};
     Object.keys(formControlModel).forEach(key => {
       group[formControlModel[key].NAME] = new FormControl({
@@ -16,7 +20,7 @@ export class Util {
     return new FormGroup(group);
   }
 
-  static resetFormGroup(form: FormGroup, data?:  { [key: string]: any }, ignore?: string[]) {
+  public static resetFormGroup(form: FormGroup, data?:  { [key: string]: any }, ignore?: string[]) {
     Object.keys(form.controls).forEach(key => {
       if (!ignore || !ignore.includes(key)) {
         const ctr = form.controls[key];
@@ -37,7 +41,7 @@ export class Util {
     });
   }
 
-  static getDataFormSearch(group: FormGroup): any {
+  public static getDataFormSearch(group: FormGroup): any {
     const result: { [key: string]: any } = {}; // Specify the type of result object
     Object.keys(group.controls).forEach(key => {
       const val = group.controls[key].value;

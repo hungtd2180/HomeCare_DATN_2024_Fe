@@ -1,5 +1,6 @@
 export class Constants {
-  static readonly SEARCH_FORM_COLLABORATOR = {
+  public static readonly SLASH = '/';
+  public static readonly SEARCH_FORM_COLLABORATOR = {
     AREA: {
       NAME: 'area',
       VALUE: '',
@@ -9,9 +10,14 @@ export class Constants {
       NAME: 'company',
       VALUE: '',
       VALIDATORS: []
+    },
+    FIELD: {
+      NAME: 'field',
+      VALUE: '',
+      VALIDATORS: []
     }
   }
-  static readonly AREA = [
+  public static readonly AREA = [
     "An Giang",
     "Bà Rịa - Vũng Tàu",
     "Bạc Liêu",
@@ -76,5 +82,11 @@ export class Constants {
     "Vĩnh Phúc",
     "Yên Bái"
   ];
+  public static readonly TOAST = {
+    SEVERITY: {
+      SUCCESS: 'success',
+      ERROR: 'error',
+    }
+  };
 
 }
