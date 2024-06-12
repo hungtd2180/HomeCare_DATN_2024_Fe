@@ -1,12 +1,19 @@
 import {FormControl, FormGroup} from "@angular/forms";
 import {HttpHeaders} from "@angular/common/http";
 
+
 export class Util {
   public static createHeader(): HttpHeaders {
     return new HttpHeaders({'Content-Type': 'application/json'});
   }
   static convertDateToTimeStamp(date: Date): number {
     return date.getTime();
+  }
+  static convertTimeStampToDate(date: Date): string {
+    const day = ('0' + date.getDate()).slice(-2);
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
   }
 
   public static createFormGroup(formControlModel: any): FormGroup {
@@ -59,5 +66,21 @@ export class Util {
       }
     });
     return result;
+  }
+  public static getCurrentTime() {
+    const now = new Date();
+
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0
+    const year = now.getFullYear();
+
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+
+    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+  }
+  public static createId(id : string){
+    return id + new Date().getTime();
   }
 }

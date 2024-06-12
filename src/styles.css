@@ -2,8 +2,20 @@
 @import "primeng/resources/themes/saga-blue/theme.css";
 @import "primeng/resources/primeng.min.css";
 @import "primeicons/primeicons.css";
+@import "quill/dist/quill.core.css";
+@import "quill/dist/quill.snow.css";
+. {
+  color: #000;
+}
 .main-content {
-  margin-top: 100px;
+  margin-top: 60px;
   position: relative;
   margin-left: 300px;
+}
+.secondary-content {
+  margin-top: 60px;
+  position: relative;
+}
+.flex{
+  display: flex;
 }

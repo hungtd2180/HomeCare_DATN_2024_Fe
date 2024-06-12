@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {MessageService} from "primeng/api";
-import {Constants} from "../util/constants";
+import {Constants} from "../../util/constants";
 
 @Injectable({
   providedIn: 'root'
