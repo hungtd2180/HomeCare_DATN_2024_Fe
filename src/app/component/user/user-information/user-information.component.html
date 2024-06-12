@@ -1,0 +1,43 @@
+<div class="main-content"  [style]="{height: '75vh'}">
+  <div class="row column_title">
+    <div class="col-md-12">
+      <div class="page_title">
+        <h2>Cập nhật thông tin</h2>
+      </div>
+    </div>
+  </div>
+  <p-messages></p-messages>
+  <div class="" [style]="{width: '75vw'}">
+    <div>
+      <div >
+        <form [formGroup]="form" class="p-fluid p-grid">
+          <div class="col-12">
+            <label class="required">Họ và tên</label>
+            <input [formControlName]="USER.NAME.NAME"
+                   class="form-item" type="text" pInputText [placeholder]="'Nhập họ và tên'">
+          </div>
+          <div class="col-12">
+            <label class="required">Số điện thoại</label>
+            <input [formControlName]="USER.PHONE.NAME"
+                   class="form-item" type="text" pInputText [placeholder]="'Nhập số điện thoại'">
+          </div>
+          <div class="col-12">
+            <label class="required">Email</label>
+            <input [formControlName]="USER.EMAIL.NAME"
+                   class="form-item" type="text" pInputText [placeholder]="'Nhập Email'">
+          </div>
+          <div class="col-12">
+            <label class="required">Địa chỉ</label>
+            <input [formControlName]="USER.ADDRESS.NAME"
+                   class="form-item" type="text" pInputText [placeholder]="'Nhập địa chỉ'">
+          </div>
+        </form>
+        <div class="col-12 flex justify-content-end" style="margin-top: 20px">
+          <button pButton type="reset" label="Tải lại" (click)="refresh()" style="margin-right: 10px"></button>
+          <button pButton type="submit" label="Gửi" (click)="onSubmit()"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

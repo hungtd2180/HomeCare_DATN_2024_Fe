@@ -1,0 +1,48 @@
+<div class="flex full price_table padding_infor_info">
+  <p-dialog header="{{title}}"
+            [(visible)]="isVisible" [modal]="true" (onHide)="handleCancel()" [style]="{width: '50vw', height: 'fit-content'}">
+    <div>
+      <form [formGroup]="form" class="p-fluid p-grid">
+        <div class="col-12">
+          <label class="required">Thiết bị</label>
+          <input
+            [formControlName]="REQUEST.NAME.NAME"
+            class="form-item"
+            type="text" pInputText
+            [placeholder]="'Nhập tên thiết bị mới'">
+        </div>
+        <div class="col-12">
+          <label class="required">Dòng thiết bị </label>
+          <input
+            [formControlName]="REQUEST.MODEL_NAME.NAME"
+            class="form-item"
+            type="text" pInputText
+            [placeholder]="'Nhập dòng thiết bị'">
+        </div>
+        <div class="col-12">
+          <label class="required">Loại thiết bị </label>
+          <p-dropdown
+            class="form-item"
+            [formControlName]="REQUEST.TYPE.NAME"
+            [placeholder]="'Chọn loại thiết bị'"
+            [scrollHeight]="'432px'"
+            [resetFilterOnHide]="true" [options]="types"></p-dropdown>
+        </div>
+        <div class="col-12">
+          <label class="required">Nhà sản xuất </label>
+          <input
+            [formControlName]="REQUEST.MANUFACTURER.NAME"
+            class="form-item"
+            type="text" pInputText
+            [placeholder]="'Nhập nhà sản xuất'"></div>
+      </form>
+      <div class="col-12 m-4">
+        <button pButton type="reset" label="Tải lại" (click)="refresh()"></button>
+        <button pButton type="submit" label="Lưu" (click)="onSubmit()"></button>
+        <button pButton type="button" label="Huỷ" (click)="handleCancel()"></button>
+        <p-confirmDialog></p-confirmDialog>
+      </div>
+    </div>
+
+  </p-dialog>
+</div>

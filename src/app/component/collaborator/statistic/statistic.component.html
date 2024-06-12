@@ -1,0 +1,42 @@
+<div class="main-content">
+  <div class="row column_title">
+    <div class="col-md-12">
+      <div class="page_title">
+        <h2>Trang chủ</h2>
+      </div>
+    </div>
+  </div>
+  <div class="flex col-12" style="margin-bottom: 10px" >
+    <p-card [style]="{color: '#000'}">
+      <div class="flex justify-content-between align-items-center">
+        <div>
+          <i style="font-size: 50px" class="pi pi-users"></i>
+        </div>
+        <div style="font-size: 20px;" class="align-items-center">
+          Số lượng khách hàng mới trong tháng : <span *ngIf="data">{{ data.length }}</span>
+        </div>
+      </div>
+    </p-card>
+  </div>
+  <div class="flex">
+    <div *ngFor="let status of statusMapping" class="col-3">
+      <p-card [style]="{background: status.background, color: '#fff'}">
+        <div class="flex flex-column justify-content-center align-items-center">
+          <i style="font-size: 50px" class="{{status.icon}}"></i>
+          <div style="font-size: 20px; margin: 5px">{{ status.count }}</div>
+          <div>{{ status.header }}</div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+  <div class="row column_title">
+    <div class="col-md-12">
+      <div class="page_title">
+        <h2>Thống kê số lượng yêu cầu </h2>
+      </div>
+      <p-chart type="doughnut" [data]="pieData" height="400px" class="col-6"></p-chart>
+    </div>
+  </div>
+
+</div>
+

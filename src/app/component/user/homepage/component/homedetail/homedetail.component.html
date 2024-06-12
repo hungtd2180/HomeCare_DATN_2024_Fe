@@ -1,0 +1,37 @@
+<div style="margin-bottom: 20px; display: flex" class="flex-wrap full price_table padding_infor_info">
+  <div class="row">
+    <div style="height: 400px" *ngFor="let item of data" class="col-lg-4 col-md-5 col-sm-5 col-xs-12 profile_details margin_bottom_30">
+      <div class="contact_blog" style="flex: 1">
+        <h4 class="brief"></h4>
+        <div class="contact_inner">
+          <div class="left">
+            <h3>{{ item.name }}</h3>
+            <p><strong>Lĩnh vực sửa chữa: </strong>{{JSON.parse(item.field)}}</p>
+            <ul class="list-unstyled">
+              <li><i class="pi pi-envelope"></i> : {{item.email}}</li>
+              <li><i class="pi pi-phone"></i> : {{ item.phone }}</li>
+              <li><i class="pi pi-briefcase"></i> : {{item.address}}</li>
+            </ul>
+          </div>
+          <div class="right">
+            <div class="profile_contacts" style="flex: 1">
+              <img class="img-responsive" src="assets/images/{{item.image}}" alt="#">
+            </div>
+          </div>
+          <div class="bottom_list">
+            <div class="left_rating">
+              <p class="ratings">
+
+              </p>
+            </div>
+            <div class="right_button ">
+              <button type="button" class="btn btn-primary btn-xs" (click)="goToPage(item.collaboratorId)">
+                <i class="pi pi-phone"> </i> Liên hệ
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

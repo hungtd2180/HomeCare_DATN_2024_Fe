@@ -1,0 +1,57 @@
+<div class="main-content">
+  <div class="row column_title">
+    <div class="col-md-12">
+      <div class="page_title">
+        <h2>Trang chủ</h2>
+      </div>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="col-3">
+      <p-card [style]="{background: '#ffdb47', color: '#fff'}">
+        <div class="flex flex-column justify-content-center align-items-center">
+          <i style="font-size: 50px" class="pi pi-sign-in"></i>
+          <div *ngIf="visitCount" style="font-size: 20px; margin: 5px">{{ visitCount }}</div>
+          <div>Lượng truy cập mới</div>
+        </div>
+      </p-card>
+    </div>
+    <div class="col-3">
+      <p-card [style]="{background: '#8daaff', color: '#fff'}">
+        <div class="flex flex-column justify-content-center align-items-center">
+          <i style="font-size: 50px" class="pi pi-user"></i>
+          <div *ngIf="userCount" style="font-size: 20px; margin: 5px">{{ userCount }}</div>
+          <div>Lượng người dùng mới</div>
+        </div>
+      </p-card>
+    </div>
+    <div class="col-3">
+      <p-card [style]="{background: '#00f200', color: '#fff'}">
+        <div class="flex flex-column justify-content-center align-items-center">
+          <i style="font-size: 50px" class="pi pi-users"></i>
+          <div *ngIf="collaboratorCount" style="font-size: 20px; margin: 5px">{{ collaboratorCount }}</div>
+          <div>Lượng cộng tác viên mới</div>
+        </div>
+      </p-card>
+    </div>
+    <div class="col-3">
+      <p-card [style]="{background: '#ffdb47', color: '#fff'}">
+        <div class="flex flex-column justify-content-center align-items-center">
+          <i style="font-size: 50px" class="pi pi-sign-in"></i>
+          <div *ngIf="requestCount" style="font-size: 20px; margin: 5px">{{ requestCount }}</div>
+          <div>Lượng giao dịch mới</div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+</div>
+  <div class="row column_title">
+    <div class="col-md-12">
+      <div class="page_title">
+        <h2>Thống kê số lượng yêu cầu </h2>
+      </div>
+      <p-chart type="bar" [data]="lineData" height="400px" class="col-6"></p-chart>
+    </div>
+  </div>
+
+

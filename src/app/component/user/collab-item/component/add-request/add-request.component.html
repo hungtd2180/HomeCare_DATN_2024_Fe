@@ -1,0 +1,64 @@
+<div class="flex full price_table padding_infor_info">
+  <p-dialog header="Thêm mới phiếu sửa chữa"
+            [(visible)]="isVisible" [modal]="true" (onHide)="handleCancel()" [style]="{width: '50vw', height: 'fit-content'}">
+    <div>
+      <p-messages></p-messages>
+      <form [formGroup]="form" class="p-fluid p-grid">
+        <div class="col-12">
+          <label class="required">Thiết bị</label>
+          <p-dropdown *ngIf="!checkAdd"
+                      class="form-item"
+                      [formControlName]="REQUEST.NAME.NAME"
+                      [(ngModel)]="selectedDevice"
+                      [placeholder]="'Chọn thiết bị'"
+                      [scrollHeight]="'432px'"
+                      [resetFilterOnHide]="true" [options]="deviceNames"></p-dropdown>
+          <input *ngIf="checkAdd"
+                 [formControlName]="REQUEST.NAME.NAME"
+                 class="form-item"
+                 type="text" pInputText
+                 [placeholder]="'Nhập tên thiết bị mới'">
+          <button pButton type="button" icon="pi pi-plus" (click)="addDevice()" [disabled]="checkAdd"></button>
+        </div>
+        <div class="col-12">
+          <label class="required">Dòng thiết bị </label><span *ngIf="!checkAdd"> : {{ selectedDevice?.modelName }}</span>
+          <input *ngIf="checkAdd"
+                 [formControlName]="REQUEST.MODEL_NAME.NAME"
+                 class="form-item"
+                 type="text" pInputText
+                 [placeholder]="'Nhập dòng thiết bị'">
+        </div>
+        <div class="col-12">
+          <label class="required">Loại thiết bị </label><span *ngIf="!checkAdd"> : {{ selectedDevice?.type }}</span>
+          <p-dropdown *ngIf="checkAdd"
+                      class="form-item"
+                      [formControlName]="REQUEST.TYPE.NAME"
+                      [placeholder]="'Chọn loại thiết bị'"
+                      [scrollHeight]="'432px'"
+                      [resetFilterOnHide]="true" [options]="types"></p-dropdown>
+        </div>
+        <div class="col-12">
+          <label class="required">Nhà sản xuất </label><span *ngIf="!checkAdd"> : {{ selectedDevice?.manufacturer }}</span>
+          <input *ngIf="checkAdd"
+                 [formControlName]="REQUEST.MANUFACTURER.NAME"
+                 class="form-item"
+                 type="text" pInputText
+                 [placeholder]="'Nhập nhà sản xuất'">
+        </div>
+        <div class="col-12">
+          <label class="required">Mô tả lỗi của thiết bị</label>
+          <textarea pInputTextarea
+                    [formControlName]="REQUEST.ERROR_DESCRIPTION.NAME"
+                    rows="5"></textarea>
+        </div>
+      </form>
+      <div class="col-12">
+        <button pButton type="reset" label="Tải lại" (click)="refresh()"></button>
+        <button pButton type="submit" label="Gửi" (click)="onSubmit()"></button>
+        <button pButton type="button" label="Huỷ" (click)="handleCancel()"></button>
+        <p-confirmDialog></p-confirmDialog>
+      </div>
+    </div>
+
+  </p-dialog>
+</div>

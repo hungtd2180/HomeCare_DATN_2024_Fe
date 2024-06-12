@@ -1,0 +1,56 @@
+<div class="full_container">
+  <div class="container">
+    <div class="center verticle_center full_height">
+      <div class="login_section">
+        <div class="logo_login">
+          <div class="center">
+            <img width="550" height="175" src="assets/images/logo/logo-ctv.png" alt="#" />
+          </div>
+        </div>
+        <p-toast></p-toast>
+        <p-messages></p-messages>
+        <div class="login_form">
+          <form [formGroup]="form" (ngSubmit)="logIn()">
+            <fieldset>
+              <div class="field">
+                <label class="label_field">Tên đăng nhập</label>
+                <input [formControlName]="REGISTER.USERNAME.NAME" type="text" placeholder="Nhập tên đăng nhập" />
+              </div>
+              <div class="field">
+                <label class="label_field">Tên công ty</label>
+                <input [formControlName]="REGISTER.NAME.NAME" type="text" placeholder="Nhập tên công ty" />
+              </div>
+              <div class="field">
+                <label class="label_field">Số điện thoại</label>
+                <input [formControlName]="REGISTER.PHONE.NAME" type="text"placeholder="Nhập số điện thoại" />
+              </div>
+              <div class="field">
+                <label class="label_field">Địa chỉ</label>
+                <input [formControlName]="REGISTER.ADDRESS.NAME" type="text" placeholder="Nhập địa chỉ" />
+              </div>
+              <div class="field">
+                <label class="label_field">Lĩnh vực</label>
+                <p-multiSelect [options]="fields"
+                               [formControlName]="REGISTER.FIELD.NAME"
+                               [(ngModel)]="selectedField"
+                ></p-multiSelect>
+              </div>
+              <div class="field">
+                <label class="label_field">Mật khẩu</label>
+                <input [formControlName]="REGISTER.PASSWORD.NAME" type="password" name="password" placeholder="Password" />
+              </div>
+              <div class="field">
+                <label class="label_field hidden">hidden label</label>
+                <a class="forgot" routerLink="/collab/login">Đã có tài khoản?</a>
+              </div>
+              <div class="field margin_0">
+                <label class="label_field hidden">hidden label</label>
+                <button type="submit" class="main_bt">Đăng kí</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

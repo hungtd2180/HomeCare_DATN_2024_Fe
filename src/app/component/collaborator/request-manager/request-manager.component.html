@@ -1,0 +1,25 @@
+<div class="main-content">
+  <div class="row column_title">
+    <div class="col-md-12">
+      <div class="page_title">
+        <h2>Danh sách yêu cầu sửa chữa</h2>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <p-tabView>
+      <p-tabPanel header="Đang chờ tiếp nhận">
+        <app-open-status></app-open-status>
+      </p-tabPanel>
+      <p-tabPanel header="Đang sửa chữa">
+        <app-doing-status></app-doing-status>
+      </p-tabPanel>
+      <p-tabPanel header="Hoàn tất">
+        <app-done-status></app-done-status>
+      </p-tabPanel>
+      <p-tabPanel header="Từ chối tiếp nhận">
+        <app-deny-status></app-deny-status>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</div>

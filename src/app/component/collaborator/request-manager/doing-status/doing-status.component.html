@@ -1,0 +1,142 @@
+<div class="flex flex-row align-items-center flex-wrap">
+  <form [formGroup]="formSearch"
+        (ngSubmit)="getData()"
+        class="flex filter-option w-100 justify-content-between">
+    <div class="flex">
+      <p-calendar [formControlName]="SEARCH_FORM.TIME_START.NAME"
+                  placeholder="Thời gian bắt đầu"
+                  [showIcon]="true"
+                  [icon]="'pi pi-calendar'"
+                  dateFormat="dd/mm/yy" ></p-calendar>
+      <span style="margin-left: 10px "></span>
+      <p-calendar [formControlName]="SEARCH_FORM.TIME_END.NAME"
+                  placeholder="Thời gian kết thúc"
+                  [showIcon]="true"
+                  [icon]="'pi pi-calendar'"
+                  dateFormat="dd/mm/yy" ></p-calendar>
+    </div>
+    <div class="flex">
+      <button pButton type="submit" icon="pi pi-search" class="btn-primary" style="margin-left: 10px "></button>
+      <button pButton type="button" icon="pi pi-sync" iconPos="left" style="margin-left: 10px " label="Làm mới" (click)="refreshData()"></button>
+    </div>
+  </form>
+  <p-toast></p-toast>
+</div>
+<p-table [value]="datas" [rowHover]="true" responsiveLayout="scroll"  [style]="{height: '50vh'}">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>
+        <div class="flex justify-content-center">
+          <span>STT</span>
+        </div>
+      </th>
+      <th>
+        <div class="flex justify-content-center" >
+          <span>Tên khách hàng</span>
+        </div>
+      </th>
+      <th>
+        <div class="flex justify-content-center" >
+          <span>Tên thiết bị</span>
+        </div>
+      </th>
+      <th>
+        <div class="flex justify-content-center">
+          <span>Dòng thiết bị</span>
+        </div>
+      </th>
+      <th>
+        <div class="flex justify-content-center">
+          <span>Nhà sản xuất</span>
+        </div>
+      </th>
+      <th>
+        <div class="flex justify-content-center">
+          <span>Loại thiết bị</span>
+        </div>
+      </th>
+      <th>
+        <div class="flex justify-content-center">
+          <span>Trạng thái thiết bị</span>
+        </div>
+      </th>
+      <th>
+        <div class="flex justify-content-center">
+          <span>Thời gian bắt đầu</span>
+        </div>
+      </th>
+      <th>
+        <div class="flex justify-content-center">
+          <span>Cập nhật</span>
+        </div>
+      </th>
+      <th>
+        <div class="flex justify-content-center">
+          <span>Tình trạng</span>
+        </div>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-data let-index="rowIndex">
+    <tr>
+      <td>
+        <div class="flex justify-content-center">
+          <span>{{index + 1}}</span>
+        </div>
+      </td>
+      <td>
+        <div class="flex justify-content-center" style="cursor: pointer" (click)="openDetail(data)">
+          <span>{{ data.user.name }}</span>
+        </div>
+      </td>
+      <td>
+        <div class="flex justify-content-center" style="cursor: pointer" (click)="openDetail(data)">
+          <span>{{ data.name }}</span>
+        </div>
+      </td>
+      <td><div class="flex justify-content-center">
+        <span>{{ data.modelName }}</span>
+      </div></td>
+      <td><div class="flex justify-content-center">
+        <span>{{ data.manufacturer }}</span>
+      </div></td>
+      <td><div class="flex justify-content-center">
+        <span>{{ data.type }}</span>
+      </div></td>
+      <td><div class="flex justify-content-center">
+        <p-tag *ngIf="data.statusDevice === '4'" severity="success" value="Hoản thành sửa chữa"></p-tag>
+        <p-tag *ngIf="data.statusDevice === '3b'" severity="primary" value="Đang vận chuyển"></p-tag>
+        <p-tag *ngIf="data.statusDevice === '3a'" severity="primary" value="Đang vận chuyển"></p-tag>
+        <p-tag *ngIf="data.statusDevice === '2'" severity="primary" value="Đang sửa chữa"></p-tag>
+        <p-tag *ngIf="data.statusDevice === '1'" severity="warning" value="Yêu cầu sửa chữa"></p-tag>
+        <p-tag *ngIf="data.statusDevice === '0'" severity="danger" value="Không xử lí được"></p-tag>
+      </div></td>
+      <td><div class="flex justify-content-center">
+        <span>{{ data.timeAccept | dateFormat }}</span>
+      </div></td>
+      <td><div class="flex justify-content-center">
+        <div class="" style="cursor: pointer"  >
+          <p-button *ngIf="data.statusDevice === '2'" label="Cập nhật" (click)="openEdit(data.employee, data.statusDevice, data.fixDescription, data.requestId)"></p-button>
+        </div>
+      </div></td>
+      <td><div class="flex justify-content-center">
+        <div class="" style="cursor: pointer"  >
+          <p-button  *ngIf="data.statusDevice === '2'" label="Hoàn tất" (click)="action(data.requestId, '2', data.employee?.employeeId)"></p-button>
+          <p-button  *ngIf="data.statusDevice === '2'" label="Không sửa được" (click)="action(data.requestId, '3', data.employee?.employeeId)"></p-button>
+        </div>
+      </div></td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="11">
+        <div class="flex flex-column justify-content-center align-items-center">
+          <p-image class="flex" src="assets/images/Empty.png" alt="empty"></p-image>
+          <span> Không có dữ liệu </span>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<app-manager-detail></app-manager-detail>
+<app-update-request (update)="refreshData()"></app-update-request>

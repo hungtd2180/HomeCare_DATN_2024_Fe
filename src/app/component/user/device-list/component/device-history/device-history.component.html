@@ -1,0 +1,110 @@
+<div class="flex full price_table padding_infor_info">
+  <p-dialog header="Lịch sử sửa chữa"
+            [(visible)]="isVisible" [modal]="true" (onHide)="handleCancel()" [style]="{width: '75vw', height: 'fit-content'}">
+    <div class="col-12">
+      <p-table [value]="requests" [rowHover]="true" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>
+              <div class="flex justify-content-center">
+                <span>STT</span>
+              </div>
+            </th>
+            <th>
+              <div class="flex justify-content-center">
+                <span>Tên thiết bị</span>
+              </div>
+            </th>
+            <th>
+              <div class="flex justify-content-center">
+                <span>Loại thiết bị</span>
+              </div>
+            </th>
+            <th>
+              <div class="flex justify-content-center">
+                <span>Tình trạng thiết bị</span>
+              </div>
+            </th>
+            <th>
+              <div class="flex justify-content-center">
+                <span>Tình trạng yêu cầu</span>
+              </div>
+            </th>
+            <th>
+              <div class="flex justify-content-center">
+                <span>Thời gian bắt đầu</span>
+              </div>
+            </th>
+            <th>
+              <div class="flex justify-content-center">
+                <span>Thời gian tiếp nhận</span>
+              </div>
+            </th>
+            <th>
+              <div class="flex justify-content-center">
+                <span>Thời gian kết thúc</span>
+              </div>
+            </th>
+            <th>
+              <div class="flex justify-content-center">
+                <span>Công ty phụ trách</span>
+              </div>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-data let-index="rowIndex">
+          <tr>
+            <td>
+              <div class="flex justify-content-center">
+                <span>{{index + 1}}</span>
+              </div>
+            </td>
+            <td>
+              <div class="flex justify-content-center">
+                <span>{{data.name}}</span>
+              </div>
+            </td>
+            <td><div class="flex justify-content-center">
+              <span>{{data.type}}</span>
+            </div></td>
+            <td><div class="flex justify-content-center">
+              <p-tag *ngIf="data.statusDevice === '3'" severity="success" value="Hoản thành sửa chữa"></p-tag>
+              <p-tag *ngIf="data.statusDevice === '2'" severity="primary" value="Đang sửa chữa"></p-tag>
+              <p-tag *ngIf="data.statusDevice === '1'" severity="warning" value="Yêu cầu sửa chữa"></p-tag>
+              <p-tag *ngIf="data.statusDevice === '0'" severity="danger" value="Không xử lí được"></p-tag>
+            </div></td>
+            <td><div class="flex justify-content-center">
+              <p-tag *ngIf="data.statusRequest === '3'" severity="success" value="Hoàn tất"></p-tag>
+              <p-tag *ngIf="data.statusRequest === '2'" severity="primary" value="Đang tiến hành"></p-tag>
+              <p-tag *ngIf="data.statusRequest === '1'" severity="warning" value="Đang chờ tiếp nhận"></p-tag>
+              <p-tag *ngIf="data.statusRequest === '0'" severity="danger" value="Từ chối tiếp nhận"></p-tag>
+            </div></td>
+            <td><div class="flex justify-content-center">
+              <span>{{data.timeStart | dateFormat}}</span>
+            </div></td>
+            <td><div class="flex justify-content-center">
+              <span>{{data.timeAccept | dateFormat}}</span>
+            </div></td>
+            <td><div class="flex justify-content-center">
+              <span>{{data.timeEnd | dateFormat}}</span>
+            </div></td>
+            <td><div class="flex justify-content-center">
+              <span>{{data.collaborator.name}}</span>
+            </div></td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="11">
+              <div class="flex flex-column justify-content-center align-items-center">
+                <p-image class="flex" src="assets/images/Empty.png" alt="empty"></p-image>
+                <span> Không có dữ liệu </span>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+
+  </p-dialog>
+</div>

@@ -1,0 +1,37 @@
+<div class="full_container">
+  <div class="container">
+    <div class="center verticle_center full_height">
+      <div class="login_section">
+        <div class="logo_login">
+          <div class="center">
+            <img width="550" height="175" src="assets/images/logo/logo-ctv.png" alt="#" />
+          </div>
+        </div>
+        <p-messages></p-messages>
+        <div class="login_form">
+          <form [formGroup]="form" (ngSubmit)="login()">
+            <fieldset>
+              <div class="field">
+                <label class="label_field">Tên đăng nhập</label>
+                <input [formControlName]="LOGIN.USERNAME.NAME" type="text" name="email" placeholder="Nhập tên đăng nhập" />
+              </div>
+              <div class="field">
+                <label class="label_field">Mật khẩu</label>
+                <input [formControlName]="LOGIN.PASSWORD.NAME" type="password" name="password" placeholder="Password" />
+              </div>
+              <div class="field">
+                <label class="label_field hidden">hidden label</label>
+                <label class="form-check-label"><input type="checkbox" class="form-check-input">Ghi nhớ đăng nhập</label>
+                <a class="forgot" routerLink="/collab/register">Đăng kí tài khoản?</a>
+              </div>
+              <div class="field margin_0">
+                <label class="label_field hidden">hidden label</label>
+                <button type="submit" class="main_bt">Đăng nhập</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

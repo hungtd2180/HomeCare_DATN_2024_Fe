@@ -1,0 +1,111 @@
+<div class="main-content">
+  <div class="row column_title">
+    <div class="col-md-12">
+      <div class="page_title">
+        <h2>Danh sách cộng tác viên</h2>
+      </div>
+    </div>
+  </div>
+  <div class="flex-row align-items-center flex-wrap">
+    <form [formGroup]="formSearch" class=" flex filter-option w-100" (ngSubmit)="getData()">
+      <div class="flex ">
+        <input class="form-item" type="text" pInputText [formControlName]="SEARCH_FORM.COMPANY.NAME" placeholder="Tìm kiếm theo tên công ty">
+        <p-dropdown [formControlName]="SEARCH_FORM.ADDRESS.NAME" class="form-item"
+                    [placeholder]="'Chọn khu vực'"
+                    scrollHeight="432px"
+                    [resetFilterOnHide]="true"
+                    [options]="areas"></p-dropdown>
+        <p-dropdown [formControlName]="SEARCH_FORM.FIELD.NAME" class="form-item"
+                    [placeholder]="'Chọn lĩnh vực'"
+                    [scrollHeight]="'432px'"
+                    [resetFilterOnHide]="true"
+                    [options]="fields"></p-dropdown>
+      </div>
+      <div class="flex">
+        <button pButton type="submit" icon="pi pi-search" class="btn-primary" style="margin-left: 10px "></button>
+        <button pButton type="button" icon="pi pi-sync" iconPos="left" style="margin-left: 10px " label="Làm mới" (click)="refreshData()"></button>
+      </div>
+
+    </form>
+  </div>
+  <p-table [value]="data" [rowHover]="true" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>
+          <div class="flex justify-content-center">
+            <span>STT</span>
+          </div>
+        </th>
+        <th>
+          <div class="flex justify-content-center">
+            <span>Tên công ty</span>
+          </div>
+        </th>
+        <th>
+          <div class="flex justify-content-center">
+            <span>Số điện thoại</span>
+          </div>
+        </th>
+        <th>
+          <div class="flex justify-content-center">
+            <span>Email</span>
+          </div>
+        </th>
+        <th>
+          <div class="flex justify-content-center">
+            <span>Địa chỉ</span>
+          </div>
+        </th>
+        <th>
+          <div class="flex justify-content-center">
+            <span>Lĩnh vực</span>
+          </div>
+        </th>
+        <th>
+          <div class="flex justify-content-center">
+            <span>Ngày tham gia</span>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-data let-index="rowIndex">
+      <tr>
+        <td>
+          <div class="flex justify-content-center">
+            <span>{{index + 1}}</span>
+          </div>
+        </td>
+        <td>
+          <div class="flex ">
+            <span>{{ data.name }}</span>
+          </div>
+        </td>
+        <td><div class="flex ">
+          <span>{{ data.phone }}</span>
+        </div></td>
+        <td><div class="flex ">
+          <span>{{ data.email }}</span>
+        </div></td>
+        <td><div class="flex ">
+          <span>{{ data.address }}</span>
+        </div></td>
+        <td><div class="flex ">
+          <span>{{ data.field }}</span>
+        </div></td>
+        <td><div class="flex ">
+          <span>{{ data.time | dateFormat}}</span>
+        </div></td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="11">
+          <div class="flex flex-column justify-content-center align-items-center">
+            <p-image class="flex" src="assets/images/Empty.png" alt="empty"></p-image>
+            <span> Không có dữ liệu </span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

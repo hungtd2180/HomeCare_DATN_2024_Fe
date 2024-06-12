@@ -1,0 +1,82 @@
+<div class="flex full price_table padding_infor_info">
+  <p-dialog header="Chi tiết phiếu yêu cầu"
+            [(visible)]="isVisible"
+            [modal]="true"
+            (onHide)="handleCancel()"
+            [style]="{width: '50vw', height: 'fit-content'}">
+    <p-fieldset legend="Thông tin thiết bị" [toggleable]="true" [collapsed]="true">
+      <div class="col-12">
+        <label>Tên thiết bị : </label><span *ngIf="data"> {{ data.name }}</span>
+      </div>
+      <div class="col-12 flex">
+        <div class="col-6 p-0">
+          <label>Dòng thiết bị : </label><span *ngIf="data"> {{ data.modelName }}</span>
+        </div>
+        <div class="col-6 p-0">
+        <label>Nhà sản xuất : </label><span *ngIf="data"> {{ data.manufacturer }}</span>
+      </div>
+      </div>
+      <div class="col-12 flex">
+        <div class="col-6 p-0">
+          <label>Loại thiết bị : </label><span *ngIf="data"> {{ data.type }}</span>
+        </div>
+        <div class="col-6 p-0">
+          <label>Tình trạng thiết bị : </label><span *ngIf="data">
+          <p-tag *ngIf="data.statusDevice === '3'" severity="success" value="Hoản thành sửa chữa"></p-tag>
+          <p-tag *ngIf="data.statusDevice === '2'" severity="primary" value="Đang sửa chữa"></p-tag>
+          <p-tag *ngIf="data.statusDevice === '1'" severity="warning" value="Yêu cầu sửa chữa"></p-tag>
+          <p-tag *ngIf="data.statusDevice === '0'" severity="danger" value="Không xử lí được"></p-tag>
+          </span>
+        </div>
+      </div>
+      <div class="col-11 flex">
+          <label>Mô tả lỗi  : </label>
+          <p *ngIf="data"> {{ data.errorDescription }}</p>
+      </div>
+      <div class="col-12 flex">
+        <label>Mô tả cách sửa : </label>
+        <p *ngIf="data"> {{ data.fixDescription }}</p>
+      </div>
+    </p-fieldset>
+    <p-fieldset legend="Thông tin công ty phụ trách" [toggleable]="true" [collapsed]="true">
+      <div class="col-12">
+        <label>Tên khách hàng : </label><span *ngIf="data"> {{ data.collaborator?.name }}</span>
+      </div>
+      <div class="col-12 flex">
+        <div class="col-6 p-0">
+          <label>Thông tin liên hệ  : </label><span *ngIf="data"> {{ data.collaborator?.phone }}</span>
+        </div>
+        <div class="col-6 p-0">
+          <label>Địa chỉ : </label><span *ngIf="data"> {{ data.collaborator?.address }}</span>
+        </div>
+      </div>
+      <div class="col-12 flex">
+        <div class="col-6 p-0">
+          <label>Nhân viên phụ trách : </label><span *ngIf="data"> {{ data.employee?.name }}</span>
+        </div>
+        <div class="col-6 p-0">
+          <label>Thông tin liên hệ : </label><span  *ngIf="data"> {{ data.employee?.phone }}</span>
+        </div>
+      </div>
+    </p-fieldset>
+    <p-fieldset legend="Thông tin yêu cầu" [toggleable]="true" [collapsed] = true>
+      <div class="col-12">
+        <label>Tình trạng yêu cầu : </label><span *ngIf="data">
+        <p-tag *ngIf="data.statusRequest === '3'" severity="success" value="Hoàn tất"></p-tag>
+        <p-tag *ngIf="data.statusRequest === '2'" severity="primary" value="Đang tiến hành"></p-tag>
+        <p-tag *ngIf="data.statusRequest === '1'" severity="warning" value="Đang chờ tiếp nhận"></p-tag>
+        <p-tag *ngIf="data.statusRequest === '0'" severity="danger" value="Từ chối tiếp nhận"></p-tag>
+      </span>
+      </div>
+      <div class="col-12">
+        <label>Thời gian bắt đầu : </label><span *ngIf="data"> {{ data.timeStart | dateFormat }}</span>
+      </div>
+      <div class="col-12">
+        <label>Thời gian tiếp nhận : </label><span *ngIf="data"> {{ data.timeAccept | dateFormat }}</span>
+      </div>
+      <div class="col-12">
+        <label>Thời gian kết thúc : </label><span *ngIf="data"> {{ data.timeEnd | dateFormat }}</span>
+      </div>
+    </p-fieldset>
+  </p-dialog>
+</div>

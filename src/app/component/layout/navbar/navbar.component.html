@@ -1,0 +1,33 @@
+<nav class="full_container " id="sidebar">
+  <div class="sidebar_blog_1">
+    <div class="sidebar_user_info">
+      <div class="icon_setting"></div>
+      <div class="user_profle_side">
+        <div class="user_img"><img class="img-responsive" src="assets/images/{{image}}" alt="#" /></div>
+        <div class="user_info">
+          <h6>{{name}}</h6>
+          <p><span class="online_animation"></span> Online</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar_blog_2">
+    <ul class="list-unstyled components">
+      <li *ngIf="role === '1'"><a routerLink="/"><span><i class="pi pi-home"></i>Trang chủ</span></a></li>
+      <li *ngIf="role === '1'"><a routerLink="/device"><span><i class="pi pi-desktop"></i>Quản lí thiết bị</span></a></li>
+      <li *ngIf="role === '1'"><a routerLink="/history"><span><i class="pi pi-bars"></i>Quản lí lịch sử sửa chữa</span></a></li>
+      <li *ngIf="role === '1'"><a routerLink="/user/information"><span><i class="pi pi-user"></i> Thay đổi thông tin cá nhân</span></a></li>
+      <li *ngIf="role === '2'"><a routerLink="/collab/home"><i class="fa fa-clock-o orange_color"></i> <span><i class="pi pi-home"></i>Trang chủ</span></a></li>
+      <li *ngIf="role === '2'"><a routerLink="/request"><span><i class="pi pi-file"></i>Quản lí yêu cầu sửa sửa chữa</span></a></li>
+      <li *ngIf="role === '2'"><a routerLink="/employee"> <span><i class="pi pi-user-plus"></i>Quản lí nhân viên kĩ thuật</span></a></li>
+      <li *ngIf="role === '2'"><a routerLink="/customer"> <span><i class="pi pi-users"></i>Quản lí khách hàng</span></a></li>
+      <li *ngIf="role === '2'"><a routerLink="/collab/information"><i class="pi pi-user-edit"></i> <span>Thay đổi thông tin cá nhân</span></a></li>
+      <li *ngIf="role === '0'"><a routerLink="/admin/home"><span><i class="pi pi-home"></i>Trang chủ</span></a></li>
+      <li *ngIf="role === '0'"><a routerLink="/admin/user"><span><i class="pi pi-user"></i>Quản lí người dùng</span></a></li>
+      <li *ngIf="role === '0'"><a routerLink="/admin/collaborator"><span><i class="pi pi-users"></i>Quản lí cộng tác viên</span></a></li>
+      <li *ngIf="role === '0'"><a routerLink="/admin/request"><span><i class="pi pi-users"></i>Quản lí giao dịch</span></a></li>
+      <li><a style="cursor: pointer" (click)="signOut()"><span><i class=" pi pi-sign-out"></i>Đăng xuất</span></a></li>
+    </ul>
+  </div>
+</nav>
+

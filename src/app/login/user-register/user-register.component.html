@@ -1,0 +1,44 @@
+<div class="full_container">
+  <div class="container">
+    <div class="center verticle_center full_height">
+      <div class="login_section">
+        <div class="logo_login">
+          <div class="center">
+            <img width="550" height="175" src="assets/images/logo/logo-v3.png" alt="#" />
+          </div>
+        </div>
+        <p-messages></p-messages>
+        <div class="login_form">
+          <form [formGroup]="form" (ngSubmit)="logIn()">
+            <fieldset>
+              <div class="field">
+                <label class="label_field">Họ và tên</label>
+                <input [formControlName]="REGISTER.NAME.NAME" type="text" placeholder="Nhập họ và tên" />
+              </div>
+              <div class="field">
+                <label class="label_field">Số điện thoại</label>
+                <input [formControlName]="REGISTER.PHONE.NAME" type="text"placeholder="Nhập số điện thoại" />
+              </div>
+              <div class="field">
+                <label class="label_field">Địa chỉ</label>
+                <input [formControlName]="REGISTER.ADDRESS.NAME" type="text" placeholder="Nhập địa chỉ" />
+              </div>
+              <div class="field">
+                <label class="label_field">Mật khẩu</label>
+                <input [formControlName]="REGISTER.PASSWORD.NAME" type="password" name="password" placeholder="Password" />
+              </div>
+              <div class="field">
+                <label class="label_field hidden">hidden label</label>
+                <a class="forgot" routerLink="/user/login">Đã có tài khoản?</a>
+              </div>
+              <div class="field margin_0">
+                <label class="label_field hidden">hidden label</label>
+                <button type="submit" class="main_bt">Đăng kí</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="flex full price_table padding_infor_info">
+  <p-dialog header="Thêm mới nhân viên"
+            [(visible)]="isVisible" [modal]="true" (onHide)="handleCancel()" [style]="{width: '50vw', height: 'fit-content'}">
+    <div>
+      <form [formGroup]="form" class="p-fluid p-grid">
+        <div class="col-12">
+          <label class="required">Tên nhân viên</label>
+          <input
+            [formControlName]="EMPLOYEE.NAME.NAME"
+            class="form-item"
+            type="text" pInputText
+            [placeholder]="'Nhập tên nhân viên'">
+        </div>
+        <div class="col-12">
+          <label class="required">Số điện thoại liên hệ</label>
+          <input
+            [formControlName]="EMPLOYEE.PHONE.NAME"
+            class="form-item"
+            type="text" pInputText
+            [placeholder]="'Nhập số điện thoại'">
+        </div>
+      </form>
+      <div class="col-12 m-4 flex justify-content-end">
+        <button pButton type="reset" label="Tải lại" (click)="refresh()"></button>
+        <button pButton type="submit" label="Lưu" (click)="handleSubmit()"></button>
+        <button pButton type="button" label="Huỷ" (click)="handleCancel()"></button>
+      </div>
+    </div>
+    <p-confirmDialog></p-confirmDialog>
+  </p-dialog>
+</div>
+<p-toast></p-toast>
+

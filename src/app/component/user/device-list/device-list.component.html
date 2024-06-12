@@ -1,0 +1,93 @@
+<div class="main-content">
+  <div class="row column_title">
+    <div class="col-md-12">
+      <div class="page_title">
+        <h2>Danh sách thiết bị</h2>
+      </div>
+    </div>
+  </div>
+  <div class="p-fluid flex align-items-center justify-content-end flex-wrap">
+    <div class="flex flex-wrap">
+      <button pButton type="button"
+              iconPos="left"
+              icon="pi pi-plus"
+              label="Thêm" (click)="addModal()"></button>
+    </div>
+  </div>
+  <p-table [value]="data" [rowHover]="true" responsiveLayout="scroll" [style]="{height: '50vh'}">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>
+          <div class="flex justify-content-center">
+            <span>STT</span>
+          </div>
+        </th>
+        <th>
+          <div class="flex justify-content-center">
+            <span>Tên thiết bị</span>
+          </div>
+        </th>
+        <th>
+          <div class="flex justify-content-center">
+            <span>Dòng thiết bị</span>
+          </div>
+        </th>
+        <th>
+          <div class="flex justify-content-center">
+            <span>Nhà sản xuất</span>
+          </div>
+        </th>
+        <th>
+          <div class="flex justify-content-center">
+            <span>Loại thiết bị</span>
+          </div>
+        </th>
+        <th>Tác vụ</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-data let-index="rowIndex">
+      <tr>
+        <td>
+          <div class="flex justify-content-center">
+            <span>{{index + 1}}</span>
+          </div>
+        </td>
+        <td>
+          <div class="flex justify-content-center">
+            <span>{{ data.name }}</span>
+          </div>
+        </td>
+        <td><div class="flex justify-content-center" style="cursor: pointer" (click)="getCollab(data.modelName)">
+          <span>{{ data.modelName }}</span>
+        </div></td>
+        <td><div class="flex justify-content-center">
+          <span>{{ data.manufacturer }}</span>
+        </div></td>
+        <td><div class="flex justify-content-center">
+          <span>{{ data.type }}</span>
+        </div></td>
+        <td>
+          <div>
+            <div class="" style="cursor: pointer"  >
+              <i class="pi pi-pencil" (click)="editModal(data.deviceId)"></i> |
+              <i class="pi pi-book" (click)="getModal(data.deviceId)"></i>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="11">
+          <div class="flex flex-column justify-content-center align-items-center">
+            <p-image class="flex" src="assets/images/Empty.png" alt="empty"></p-image>
+            <span> Không có dữ liệu </span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<app-dialog-device (refreshData)="getData()"></app-dialog-device>
+<app-device-history></app-device-history>
+<app-collab-history></app-collab-history>

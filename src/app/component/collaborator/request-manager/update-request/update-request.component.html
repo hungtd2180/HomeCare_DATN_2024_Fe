@@ -1,0 +1,44 @@
+<div class ="flex full price_table padding_infor_info">
+  <p-dialog header="Cập nhật thông tin yêu cầu"
+            [(visible)]="isVisible" [modal]="true"
+            (onHide)="handleCancel()"
+            [style]="{width: '50vw', height: 'fit-content'}">
+    <div>
+      <form [formGroup]="form" class="p-fluid p-grid">
+        <div class="col-12">
+          <label class="required">Nhân viên phụ trách</label>
+          <p-dropdown
+                      class="form-item"
+                      [formControlName]="REQUEST.EMPLOYEE_ID.NAME"
+                      [(ngModel)]="selectedEmployee"
+                      [placeholder]="'Chọn nhân viên'"
+                      [scrollHeight]="'432px'"
+                      [resetFilterOnHide]="true" [options]="employeeName"></p-dropdown>
+        </div>
+        <div class="col-12">
+          <label class="required">Tình trạng thiết bị</label>
+          <p-dropdown class="form-item"
+                      [formControlName]="REQUEST.STATUS_DEVICE.NAME"
+                      [options]="status"
+                      [placeholder]="'Chọn tình trạng'"
+                      [scrollHeight]="'432px'"
+                      [resetFilterOnHide]="true"
+                      [(ngModel)]="selectStatus"></p-dropdown>
+        </div>
+        <div class="col-12">
+          <label class="required">Mô tả sửa chữa của thiết bị</label>
+          <textarea pInputTextarea
+                    [formControlName]="REQUEST.FIX_DESCRIPTION.NAME"
+                    rows="5"></textarea>
+        </div>
+      </form>
+      <div class="col-12">
+        <button pButton type="reset" label="Tải lại" (click)="refresh()"></button>
+        <button pButton type="submit" label="Gửi" (click)="onSubmit()"></button>
+        <button pButton type="button" label="Huỷ" (click)="handleCancel()"></button>
+        <p-confirmDialog></p-confirmDialog>
+        <p-message></p-message>
+      </div>
+    </div>
+  </p-dialog>
+</div>

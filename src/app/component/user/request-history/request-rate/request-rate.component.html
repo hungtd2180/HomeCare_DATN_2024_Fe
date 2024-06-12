@@ -1,0 +1,5 @@
+<p-dialog header="Đánh giá chất lượng"
+          [(visible)]="isVisible" [modal]="true" (onHide)="handleCancel()" [style]="{width: '24vw', height: 'fit-content'}">
+  <p-rating [(ngModel)]="rating" [cancel]="false"></p-rating>
+  <button style="float: right" pButton label="Gửi" (click)="submit()"></button>
+</p-dialog>
